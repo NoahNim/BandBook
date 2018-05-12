@@ -127,7 +127,20 @@ namespace BandTracker.Tests
       //Assert
       CollectionAssert.AreEqual(testList, result);
     }
+    [TestMethod]
+    public void Delete_DeletesVenueInDataBase_Venuess()
+    {
+      Venue testVenue = new Venue("Meowland", "Catplace");
+      testVenue.Save();
+      Venue otherVenue = new Venue("Science Center", "Seattle");
+      otherVenue.Save();
 
+      testVenue.Delete();
+      List<Venue> result = Venue.GetAll();
+      List<Venue> expected = new List<Venue>{otherVenue};
+
+      CollectionAssert.AreEqual(expected, result);
+    }
     [TestMethod]
     public void TestUpdateVenue()
     {

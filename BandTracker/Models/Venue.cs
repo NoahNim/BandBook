@@ -176,24 +176,6 @@ namespace BandTracker.Models
         }
         return bands;
     }
-    public void Delete()
-    {
-      MySqlConnection conn = DB.Connection();
-      conn.Open();
-      var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE FROM venues WHERE venue_id = @venueId; DELETE FROM tracker_info WHERE venue_id = @VenueId;";
-
-      MySqlParameter venueIdParameter = new MySqlParameter();
-      venueIdParameter.ParameterName = "@VenueId";
-      venueIdParameter.Value = this.GetId();
-      cmd.Parameters.Add(venueIdParameter);
-
-      cmd.ExecuteNonQuery();
-      if (conn != null)
-      {
-        conn.Close();
-      }
-    }
     public void UpdateVenue(string VenueName, string VenueLocation)
     {
       MySqlConnection conn = DB.Connection();
@@ -256,6 +238,24 @@ namespace BandTracker.Models
         }
 
         return newVenue;
+    }
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM venues WHERE id = @venueId; DELETE FROM tracker_info WHERE id = @VenueId;";
+
+      MySqlParameter venueIdParameter = new MySqlParameter();
+      venueIdParameter.ParameterName = "@VenueId";
+      venueIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(venueIdParameter);
+
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
     }
     public static void DeleteAll()
     {
