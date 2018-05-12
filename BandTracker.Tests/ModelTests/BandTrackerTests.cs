@@ -47,5 +47,85 @@ namespace BandTracker.Tests
       //Assert
       CollectionAssert.AreEqual(bandList, bandResult);
     }
+    [TestMethod]
+    public void AddVenue_AddsVenueToBand_VenueList()
+    {
+      //Arrange
+      Band testBand = new Band("Rush");
+      testBand.Save();
+
+      Venue testVenue = new Venue("Seattle Place", "Seattle");
+      testVenue.Save();
+
+      //Act
+      testBand.AddVenue(testVenue);
+
+      List<Venue> result = testBand.GetVenues();
+      List<Venue> testList = new List<Venue>{testVenue};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+    [TestMethod]
+    public void GetVenues_ReturnsAllBandVenues_VenueList()
+    {
+      //Arrange
+      Band testBand = new Band("Cat");
+      testBand.Save();
+
+      Venue testVenue1 = new Venue("Musicland", "City");
+      testVenue1.Save();
+
+      Venue testVenue2 = new Venue("Hawaii Hall", "LA");
+      testVenue2.Save();
+
+      //Act
+      testBand.AddVenue(testVenue1);
+      List<Venue> result = testBand.GetVenues();
+      List<Venue> testList = new List<Venue> {testVenue1, testVenue2};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+    [TestMethod]
+    public void AddBand_AddsBandToVenue_BandList()
+    {
+      //Arrange
+      Band testBand = new Band("Rush");
+      testBand.Save();
+
+      Venue testVenue = new Venue("Seattle Place", "Seattle");
+      testVenue.Save();
+
+      //Act
+      testVenue.AddBand(testBand);
+
+      List<Band> result = testVenue.GetBands();
+      List<Band> testList = new List<Band>{testBand};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+    [TestMethod]
+    public void GetBands_ReturnsAllBandBands_BandList()
+    {
+      //Arrange
+      Venue testVenue = new Venue("Cat Music", "Cat Land");
+      testVenue.Save();
+
+      Band testBand1 = new Band("Music");
+      testBand1.Save();
+
+      Band testBand2 = new Band("This Is A Band");
+      testBand2.Save();
+
+      //Act
+      testVenue.AddBand(testBand1);
+      List<Band> result = testVenue.GetBands();
+      List<Band> testList = new List<Band> {testBand1, testBand2};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
   }
 }
