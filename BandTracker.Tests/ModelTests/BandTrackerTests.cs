@@ -152,7 +152,6 @@ namespace BandTracker.Tests
 
       // Console.WriteLine("Venue Title: " + found.GetVenueTitle());
       Assert.AreEqual("Seattle Paramount Place", foundVenue.GetName());
-
     }
   }
 }

@@ -22,6 +22,8 @@ _If you run into a problem, contact us at nmedoff125@gmail.com_
   * Append to the Database
   * Delete Database
   * Edit
+  * Views to see list of bands and list of venues
+  * Views to see venue info and band info
 ### License
 * This program is free under the MIT license
 ####
