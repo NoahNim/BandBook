@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 11, 2018 at 08:51 PM
+-- Generation Time: May 12, 2018 at 09:58 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -25,13 +25,21 @@ USE `band_tracker`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Band`
+-- Table structure for table `bands`
 --
 
-CREATE TABLE `Band` (
+CREATE TABLE `bands` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bands`
+--
+
+INSERT INTO `bands` (`id`, `name`) VALUES
+(1, 'The Woofensteins'),
+(2, 'The Kittens Meow');
 
 -- --------------------------------------------------------
 
@@ -40,42 +48,59 @@ CREATE TABLE `Band` (
 --
 
 CREATE TABLE `tracker_info` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `band_id` int(11) NOT NULL,
   `venue_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tracker_info`
+--
+
+INSERT INTO `tracker_info` (`id`, `band_id`, `venue_id`) VALUES
+(1, 1, 2);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Venue`
+-- Table structure for table `venues`
 --
 
-CREATE TABLE `Venue` (
+CREATE TABLE `venues` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `venues`
+--
+
+INSERT INTO `venues` (`id`, `name`, `location`) VALUES
+(2, 'Meow City', 'Kittenland'),
+(3, 'Dog House', 'Woofland');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `Band`
+-- Indexes for table `bands`
 --
-ALTER TABLE `Band`
+ALTER TABLE `bands`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tracker_info`
 --
 ALTER TABLE `tracker_info`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
--- Indexes for table `Venue`
+-- Indexes for table `venues`
 --
-ALTER TABLE `Venue`
+ALTER TABLE `venues`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -83,22 +108,22 @@ ALTER TABLE `Venue`
 --
 
 --
--- AUTO_INCREMENT for table `Band`
+-- AUTO_INCREMENT for table `bands`
 --
-ALTER TABLE `Band`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `bands`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tracker_info`
 --
 ALTER TABLE `tracker_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Venue`
+-- AUTO_INCREMENT for table `venues`
 --
-ALTER TABLE `Venue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `venues`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

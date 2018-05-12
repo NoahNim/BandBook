@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Band Tracker</title>
+  </head>
+  <body>
+    <div class = "container text-center">
+      <h1>Venues</h1>
+      <ul>
+        @if (Model != null)
+        {
+          @foreach (var venue in Model)
+          {
+            <li><a href='/venues/@venue.GetId()'>@venue.GetName() @venue.GetLocation() <a href="/venues/@venue.GetId()/delete"><button type="button" name="button">Delete Venue</button></a></a></li>
+          }
+        }
+      </ul>
+      <a href="/venues/new"><button type="button" name="button">Add Venue</button></a>
+      <a href="/venues/deleteall"><button type="button" name="button">Delete All Venues</button></a>
+      <h4><a href="/">Return home</a></h4>
+    </div>
+  </body>
+</html>

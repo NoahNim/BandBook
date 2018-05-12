@@ -1,0 +1,38 @@
+@using BandTracker.Models;
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Band Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class = "container text-center">
+      <h1>Band tracker</h1>
+      <h2>Band: @Model["selectedBand"].GetName()</h2>
+      <hr />
+      @if (@Model["bandVenues"].Count != 0)
+      {
+        <h4>This band has played these venues:</h4>
+        <ul>
+          @foreach (Venue venue in @Model["bandVenues"])
+          {
+            <li>@venue.GetName()</li>
+          }
+        </ul>
+      }
+      <h4>Add a venue to this band:</h4>
+      <form action='/bands/@Model["selectedBand"].GetId()/venues/new' method='post'>
+        <label for='venue-id'>Select a venue</label>
+        <select id='venue-id' name='venue-id' type='text'>
+          @foreach (var venue in @Model["allVenues"])
+          {
+            <option value='@venue.GetId()'>@venue.GetName()</option>
+          }
+        </select>
+        <button type='submit'>Add</button>
+      </form>
+      <p><a href="/">Return to Main Page</a></p>
+    </div>
+  </body>
+<html>
