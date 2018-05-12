@@ -34,7 +34,7 @@ namespace BandTracker
             });
             app.Run(async (context) =>
             {
-                    await context.Response.WriteAsync("World Data Apps!");
+                    await context.Response.WriteAsync("Error Page Not Found");
             });
         }
     }
