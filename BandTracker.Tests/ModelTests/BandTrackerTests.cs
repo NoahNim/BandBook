@@ -127,5 +127,19 @@ namespace BandTracker.Tests
       //Assert
       CollectionAssert.AreEqual(testList, result);
     }
+
+    [TestMethod]
+    public void TestUpdateVenue()
+    {
+      Venue newVenue = new Venue("Seattle City Music Place", "Seattle");
+      newVenue.Save();
+
+      newVenue.UpdateVenue("Seattle Paramount Place", "Renton");
+      Venue foundVenue = Venue.Find(newVenue.GetId());
+
+      // Console.WriteLine("Venue Title: " + found.GetVenueTitle());
+      Assert.AreEqual("Seattle Paramount Place", foundVenue.GetName());
+
+    }
   }
 }
