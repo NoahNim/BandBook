@@ -10,7 +10,7 @@ _This web applications allows users to make a page that keeps tracks of bands an
 * .NET
 * C#
 * My SQL
-* _ create database band_tracker; use band_tracker; CREATE TABLE bands (id serial PRIMARY KEY, name VARCHAR(255)); CREATE TABLE venues (id serial PRIMARY KEY, name VARCHAR(255), location VARCHAR(255)); CREATE TABLE tracker_info (id serial PRIMARY KEY, venue_id int, band_id int);
+* _ create database band_tracker; use band_tracker; CREATE TABLE bands (id int PRIMARY KEY, name VARCHAR(255)); CREATE TABLE venues (id int PRIMARY KEY, name VARCHAR(255), location VARCHAR(255)); CREATE TABLE tracker_info (id serial PRIMARY KEY, venue_id int, band_id int);
 ##### Known Bugs
 _So far there are no bugs_
 
